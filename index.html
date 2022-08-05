@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="Логотип">
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img class="profile__avatar" src="./images/image.jpg" alt="Ваша аватарка">
+          <div class="profile__info">
+            <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+            <p class="profile__info-job">Исследователь океана</p>
+            <button class="profile__edit-button" type="button"></button>
+          </div>
+          <button class="profile__add-button" type="button"></button>
+        </section>
+        <section class="elements">
+          <div class="element">
+            <img class="element__image" src="./images/castle.jpg" alt="Фотография замка">
+            <div class="element__bottom-element">
+              <p class="element__title">Карачаевск</p>
+              <button class="like-button" type="button"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img class="element__image" src="./images/elbrus.jpg" alt="Фотография Эльбруса">
+            <div class="element__bottom-element">
+              <p class="element__title">Карачаевск</p>
+              <button class="like-button" type="button"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img class="element__image" src="./images/mountain.jpg" alt="Фотография горы">
+            <div class="element__bottom-element">
+              <p class="element__title">Карачаевск</p>
+              <button class="like-button" type="button"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img class="element__image" src="./images/castle.jpg" alt="Фотография замка">
+            <div class="element__bottom-element">
+              <p class="element__title">Карачаевск</p>
+              <button class="like-button" type="button"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img class="element__image" src="./images/elbrus.jpg" alt="Фотография Эльбруса">
+            <div class="element__bottom-element">
+              <p class="element__title">Карачаевск</p>
+              <button class="like-button" type="button"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img class="element__image" src="./images/mountain.jpg" alt="Фотография горы">
+            <div class="element__bottom-element">
+              <p class="element__title">Карачаевск</p>
+              <button class="like-button" type="button"></button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2020 Mesto Russia</p>
+      </footer>
+      <div class="popup">
+        <div class="popup__container">
+          <div class="popup__close-button"></div>
+          <p class="popup__title">Редактировать профиль</p>
+          <form class="popup__form">
+            <input type="text" id="name" class="popup__input" value="Жак-Ив Кусто">
+            <input type="text" id="job" class="popup__input" value="Исследователь океана">
+            <input type="submit" class="popup__submit" value="Сохранить">
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
