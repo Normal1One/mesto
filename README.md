@@ -1,9 +1,7 @@
-# Проект: Путешествие по России
+# Проект: Mesto
 ```
-https://normal1one.github.io/russian-travel/
+https://normal1one.github.io/mesto/
 ```
-## Интро
-Проект 'Место'.
 
 ## Технологии
 HTML, CSS, JavaScript
