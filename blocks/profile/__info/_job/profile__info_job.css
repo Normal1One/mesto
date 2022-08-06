@@ -1,4 +1,4 @@
-.profile__info_job {
+.profile__info-job {
   color: #FFFFFF;
   line-height: 22px;
   font-size: 18px;
@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .profile__info_job {
+  .profile__info-job {
     font-size: 14px;
     line-height: 17px;
     text-align: center;
