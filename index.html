@@ -9,71 +9,71 @@
   <body>
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Логотип">
+        <div class="header__logo"></div>
       </header>
       <main class="content">
         <section class="profile">
           <img class="profile__avatar" src="./images/image.jpg" alt="Ваша аватарка">
           <div class="profile__info">
-            <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-            <p class="profile__info-job">Исследователь океана</p>
+            <h2 class="profile__info_name">Жак-Ив Кусто</h2>
+            <p class="profile__info_job">Исследователь океана</p>
             <button class="profile__edit-button" type="button"></button>
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
-        <section class="elements">
-          <div class="element">
+        <ul class="elements">
+          <li class="element">
             <img class="element__image" src="./images/castle.jpg" alt="Фотография замка">
             <div class="element__bottom-element">
-              <p class="element__title">Карачаевск</p>
-              <button class="like-button" type="button"></button>
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="like-button"></button>
             </div>
-          </div>
-          <div class="element">
+          </li>
+          <li class="element">
             <img class="element__image" src="./images/elbrus.jpg" alt="Фотография Эльбруса">
             <div class="element__bottom-element">
-              <p class="element__title">Карачаевск</p>
-              <button class="like-button" type="button"></button>
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="like-button"></button>
             </div>
-          </div>
-          <div class="element">
+          </li>
+          <li class="element">
             <img class="element__image" src="./images/mountain.jpg" alt="Фотография горы">
             <div class="element__bottom-element">
-              <p class="element__title">Карачаевск</p>
-              <button class="like-button" type="button"></button>
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="like-button"></button>
             </div>
-          </div>
-          <div class="element">
+          </li>
+          <li class="element">
             <img class="element__image" src="./images/castle.jpg" alt="Фотография замка">
             <div class="element__bottom-element">
-              <p class="element__title">Карачаевск</p>
-              <button class="like-button" type="button"></button>
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="like-button"></button>
             </div>
-          </div>
-          <div class="element">
+          </li>
+          <li class="element">
             <img class="element__image" src="./images/elbrus.jpg" alt="Фотография Эльбруса">
             <div class="element__bottom-element">
-              <p class="element__title">Карачаевск</p>
-              <button class="like-button" type="button"></button>
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="like-button"></button>
             </div>
-          </div>
-          <div class="element">
+          </li>
+          <li class="element">
             <img class="element__image" src="./images/mountain.jpg" alt="Фотография горы">
             <div class="element__bottom-element">
-              <p class="element__title">Карачаевск</p>
-              <button class="like-button" type="button"></button>
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="like-button"></button>
             </div>
-          </div>
-        </section>
+          </li>
+        </ul>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
       <div class="popup">
         <div class="popup__container">
-          <div class="popup__close-button"></div>
-          <p class="popup__title">Редактировать профиль</p>
-          <form class="popup__form">
+          <button class="popup__close-button" type="button"></button>
+          <h1 class="popup__title">Редактировать профиль</h1>
+          <form class="popup__form" name="popup">
             <input type="text" id="name" class="popup__input" value="Жак-Ив Кусто">
             <input type="text" id="job" class="popup__input" value="Исследователь океана">
             <input type="submit" class="popup__submit" value="Сохранить">

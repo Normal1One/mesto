@@ -1,4 +1,4 @@
-.profile__info-job {
+.profile__info_job {
   color: #FFFFFF;
   line-height: 22px;
   font-size: 18px;
@@ -8,10 +8,13 @@
   margin: 0;
   margin-top: 16px;
   max-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {
-  .profile__info-job {
+  .profile__info_job {
     font-size: 14px;
     line-height: 17px;
     text-align: center;
