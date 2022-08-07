@@ -1,22 +1,23 @@
-.profile__info-name {
+.profile__info-job {
   color: #FFFFFF;
-  line-height: 48px;
-  font-size: 42px;
-  font-weight: 500;
+  line-height: 22px;
+  font-size: 18px;
+  font-weight: 400;
   font-style: normal;
   font-family: 'Inter', Arial, sans-serif;
   margin: 0;
-  max-height: 39px;
+  margin-top: 7px;
+  max-height: 18px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {
-  .profile__info-name {
-    font-size: 27px;
-    line-height: 33px;
+  .profile__info-job {
+    font-size: 14px;
+    line-height: 17px;
     text-align: center;
-    margin-top: 26px;
+    margin-top: 14px;
   }
 }

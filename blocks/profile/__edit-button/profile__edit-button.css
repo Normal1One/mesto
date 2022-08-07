@@ -5,6 +5,7 @@
   background-image: url(../../../images/EditButton.svg);
   border: 0;
   padding: 0;
+  margin-bottom: 9px;
   background-color: #000000;
   grid-area: edit-button;
   grid-row-start: 1;
