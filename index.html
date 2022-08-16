@@ -21,66 +21,53 @@
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
-        <ul class="elements">
-          <li class="element">
-            <img class="element__image" src="./images/castle.jpg" alt="Фотография замка">
-            <div class="element__bottom-element">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/elbrus.jpg" alt="Фотография Эльбруса">
-            <div class="element__bottom-element">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/mountain.jpg" alt="Фотография горы">
-            <div class="element__bottom-element">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/castle.jpg" alt="Фотография замка">
-            <div class="element__bottom-element">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/elbrus.jpg" alt="Фотография Эльбруса">
-            <div class="element__bottom-element">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/mountain.jpg" alt="Фотография горы">
-            <div class="element__bottom-element">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="like-button"></button>
-            </div>
-          </li>
-        </ul>
+        <ul class="elements"></ul>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup" id="popup-edit">
         <div class="popup__container">
           <button class="popup__close-button" type="button"></button>
-          <p class="popup__title">Редактировать профиль</p>
-          <form class="popup__form" name="popup">
+          <form class="popup__form" name="edit-profile">
+            <p class="popup__title">Редактировать профиль</p>
             <input type="text" id="name" class="popup__input" value="Жак-Ив Кусто">
             <input type="text" id="job" class="popup__input" value="Исследователь океана">
             <input type="submit" class="popup__submit" value="Сохранить">
           </form>
         </div>
       </div>
+      <div class="popup" id="popup-add">
+        <div class="popup__container">
+          <button class="popup__close-button" type="button"></button>
+          <form class="popup__form" name="add-element">
+            <p class="popup__title">Новое место</p>
+            <input type="text" id="title" class="popup__input" placeholder="Название">
+            <input type="text" id="url" class="popup__input" placeholder="Ссылка на картинку">
+            <input type="submit" class="popup__submit" value="Создать">
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="popup-image">
+        <div class="popup__image-container">
+          <button class="popup__close-button" type="button"></button>
+          <img class="popup__image" src="">
+          <p class="popup__title_image"></p>
+        </div>
+      </div>
     </div>
+    <template class="element-template">
+      <li class="element">
+        <button class="element__image-button" type="button">
+          <img class="element__image" src="">
+        </button>
+        <button class="delete-button"></button>
+        <div class="element__bottom-element">
+          <h2 class="element__title"></h2>
+          <button class="like-button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
