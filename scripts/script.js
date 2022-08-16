@@ -93,7 +93,7 @@ function openPopUp(evt) {
     document.getElementById('popup-edit').classList.add('popup_opened');
   } else {
     document.getElementById('popup-image').classList.add('popup_opened');
-    document.querySelector('.popup__title_image').textContent = evt.target.parentNode.parentNode.querySelector('.element__title').textContent;
+    document.querySelector('.popup__image-title').textContent = evt.target.parentNode.parentNode.querySelector('.element__title').textContent;
     document.querySelector('.popup__image').src = evt.target.src;
   }
 }
