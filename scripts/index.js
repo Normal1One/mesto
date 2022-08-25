@@ -82,7 +82,7 @@ buttonClose.forEach( element => {
   element.addEventListener('click', closePopup);
 });
 buttonAdd.addEventListener('click', function () {
-  openPopup(popupCard)
+  openPopup(popupCard);
 });
 buttonEdit.addEventListener('click', openProfilePopup);
 
