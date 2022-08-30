@@ -97,7 +97,9 @@ buttonAdd.addEventListener('click', function () {
 buttonEdit.addEventListener('click', openProfilePopup);
 popupList.forEach(popup => {
   popup.addEventListener('click', (evt) => {
-    closePopup(evt);
+    if (evt.target.classList.contains('popup')) {
+      closePopup(evt);
+    }
     evt.stopImmediatePropagation();
   });
 });
