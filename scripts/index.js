@@ -4,6 +4,9 @@ const elementTemplate = document.querySelector('.element-template').content;
 const formElementAdd = document.getElementById('add-element');
 const formElementEdit = document.getElementById('edit-profile');
 
+const popupImageContent = document.querySelector('.popup__image')
+const popupImageTitle = document.querySelector('.popup__image-title');
+
 const popupList = document.querySelectorAll('.popup');
 const popupImage = document.querySelector('#popup-image');
 const popupProfile = document.querySelector('#popup-edit');
@@ -26,7 +29,9 @@ function addElements(data) {
   elementElement.querySelector('.element__title').textContent = data.name;
   elementElement.querySelector('.element__image').src = data.link;
   elementElement.querySelector('.element__image').alt = data.name + ' фото';
-  elementElement.querySelector('.element__image-button').addEventListener('click', handlePreviewPicture);
+  elementElement.querySelector('.element__image-button').addEventListener('click', () => {
+    handlePreviewPicture(data);
+  });
   elementElement.querySelector('.like-button').addEventListener('click', handleLikeIcon);
   elementElement.querySelector('.delete-button').addEventListener('click', handleDeleteIcon);
   return elementElement;
@@ -36,17 +41,15 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   jobValue.textContent = jobInput.value;
   nameValue.textContent = nameInput.value;
-  closePopup(evt);
+  closePopup(document.querySelector('.popup_opened'));
 }
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  let data = [{name: titleInput.value, link: urlInput.value}];
-  data.forEach( element => {
-    elementsList.prepend(addElements(element));
-  });
-  formElementAdd.reset()
-  closePopup(evt);
+  const data = {name: titleInput.value, link: urlInput.value};
+  elementsList.prepend(addElements(data));
+  formElementAdd.reset();
+  closePopup(document.querySelector('.popup_opened'));
 }
 
 function handleLikeIcon(evt) {
@@ -54,17 +57,21 @@ function handleLikeIcon(evt) {
 }
 
 function handleDeleteIcon(evt) {
-  evt.target.parentNode.remove();
+  evt.target.closest('.element').remove();
 }
 
 function openPopup(popup) {
+  if (popup.id !== 'popup-image') {
+    resetError(popup.querySelector(config.formSelector), config);
+  }
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupHandler);
 }
 
 function handlePreviewPicture(data) {
-  document.querySelector('.popup__image-title').textContent = data.target.closest('.element').querySelector('.element__title').textContent;
-  document.querySelector('.popup__image').src = data.target.src;
+  popupImageTitle.textContent = data.name;
+  popupImageContent.src = data.link;
+  popupImageContent.alt = data.name;
   openPopup(popupImage);
 }
 
@@ -75,30 +82,31 @@ function openProfilePopup() {
 }
 
 function closePopup(popup) {
-  popup.target.closest('.popup').classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupHandler);
 }
 
 function closePopupHandler(evt) {
   if (evt.key === 'Escape') {
-    let popup = Array.from(popupList).filter(popup => popup.closest('.popup_opened'));
-    popup[0].classList.remove('popup_opened')
-    document.removeEventListener('keydown', closePopupHandler);
+    closePopup(document.querySelector('.popup_opened'));
   }
 }
 
 formElementEdit.addEventListener('submit', handleProfileFormSubmit);
 formElementAdd.addEventListener('submit', handleCardFormSubmit);
 buttonClose.forEach( element => {
-  element.addEventListener('click', closePopup);
+  element.addEventListener('click', function () {
+    closePopup(document.querySelector('.popup_opened'));
+  });
 });
 buttonAdd.addEventListener('click', function () {
   openPopup(popupCard);
 });
 buttonEdit.addEventListener('click', openProfilePopup);
 popupList.forEach(popup => {
-  popup.addEventListener('click', (evt) => {
+  popup.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup')) {
-      closePopup(evt);
+      closePopup(document.querySelector('.popup_opened'));
     }
     evt.stopImmediatePropagation();
   });

@@ -13,9 +13,3 @@
 .popup#popup-image {
   background-color: rgba(0, 0, 0, 0.9);
 }
-
-.popup.popup_opened {
-  visibility: visible;
-  opacity: 1;
-  cursor: pointer;
-}
