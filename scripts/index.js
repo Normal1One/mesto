@@ -41,7 +41,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   jobValue.textContent = jobInput.value;
   nameValue.textContent = nameInput.value;
-  closePopup(document.querySelector('.popup_opened'));
+  closePopup(popupProfile);
 }
 
 function handleCardFormSubmit(evt) {
@@ -49,7 +49,7 @@ function handleCardFormSubmit(evt) {
   const data = {name: titleInput.value, link: urlInput.value};
   elementsList.prepend(addElements(data));
   formElementAdd.reset();
-  closePopup(document.querySelector('.popup_opened'));
+  closePopup(popupCard);
 }
 
 function handleLikeIcon(evt) {
@@ -61,11 +61,13 @@ function handleDeleteIcon(evt) {
 }
 
 function openPopup(popup) {
-  if (popup.id !== 'popup-image') {
-    resetError(popup.querySelector(config.formSelector), config);
-  }
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupHandler);
+}
+
+function openFormPopup(popup) {
+  resetError(popup.querySelector(config.formSelector), config);
+  openPopup(popup);
 }
 
 function handlePreviewPicture(data) {
@@ -78,7 +80,7 @@ function handlePreviewPicture(data) {
 function openProfilePopup() {
   nameInput.value = nameValue.textContent;
   jobInput.value = jobValue.textContent;
-  openPopup(popupProfile);
+  openFormPopup(popupProfile);
 }
 
 function closePopup(popup) {
@@ -94,19 +96,14 @@ function closePopupHandler(evt) {
 
 formElementEdit.addEventListener('submit', handleProfileFormSubmit);
 formElementAdd.addEventListener('submit', handleCardFormSubmit);
-buttonClose.forEach( element => {
-  element.addEventListener('click', function () {
-    closePopup(document.querySelector('.popup_opened'));
-  });
-});
 buttonAdd.addEventListener('click', function () {
-  openPopup(popupCard);
+  openFormPopup(popupCard);
 });
 buttonEdit.addEventListener('click', openProfilePopup);
 popupList.forEach(popup => {
   popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup')) {
-      closePopup(document.querySelector('.popup_opened'));
+    if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
+      closePopup(popup);
     }
     evt.stopImmediatePropagation();
   });
