@@ -12,7 +12,6 @@ const popupImage = document.querySelector('#popup-image');
 const popupProfile = document.querySelector('#popup-edit');
 const popupCard = document.querySelector('#popup-add');
 
-const buttonClose = document.querySelectorAll('.popup__close-button');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 
