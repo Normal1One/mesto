@@ -1,11 +1,10 @@
-import { openPopup } from "./index.js";
-
 export class Card {
-  constructor(data, elementTemplate) {
-    this._title = data.name;
-    this._image = data.link;
+  constructor(data, cardSelector, handleCardClick) {
+    this._name = data.name;
+    this._link = data.link;
     this._alt = data.name + ' фото';
-    this._elementTemplate = elementTemplate;
+    this._elementTemplate = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -14,21 +13,24 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector('.element__image');
+    this._likeButton = this._element.querySelector('.like-button');
+    this._deleteButton = this._element.querySelector('.delete-button');
     this._setEventListeners();
 
-    this._element.querySelector('.element__title').textContent = this._title;
-    this._element.querySelector('.element__image').src = this._image;
-    this._element.querySelector('.element__image').alt = this._alt;
+    this._element.querySelector('.element__title').textContent = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._alt;
 
     return this._element;
   }
 
   _setEventListeners() {
-    this._element.querySelector('.element__image-button').addEventListener('click', () => {
-      this._handlePreviewPicture();
+    this._cardImage.addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link);
     });
-    this._element.querySelector('.like-button').addEventListener('click', this._handleLikeIcon);
-    this._element.querySelector('.delete-button').addEventListener('click', this._handleDeleteIcon);
+    this._likeButton.addEventListener('click', this._handleLikeIcon);
+    this._deleteButton.addEventListener('click', this._handleDeleteIcon);
   }
 
   _handleLikeIcon(evt) {
@@ -37,12 +39,5 @@ export class Card {
 
   _handleDeleteIcon(evt) {
     evt.target.closest('.element').remove();
-  }
-
-  _handlePreviewPicture() {
-    document.querySelector('.popup__image-title').textContent = this._title;
-    document.querySelector('.popup__image').src = this._image;
-    document.querySelector('.popup__image').alt = this._alt;
-    openPopup(document.querySelector('#popup-image'));
   }
 }
