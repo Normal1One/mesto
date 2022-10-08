@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body>
     <div class="page">
@@ -13,7 +12,7 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img class="profile__avatar" src="./images/image.jpg" alt="Ваша аватарка">
+          <img class="profile__avatar" src=<%=require('./images/image.jpg')%> alt="Ваша аватарка">
           <div class="profile__info">
             <h1 class="profile__info-name">Жак-Ив Кусто</h1>
             <p class="profile__info-job">Исследователь океана</p>
@@ -33,11 +32,11 @@
             <fieldset class="form__set">
               <p class="popup__title">Редактировать профиль</p>
               <label class="form__field">
-                <input type="text" id="name-input" class="form__input" value="Жак-Ив Кусто" placeholder="Имя" required minlength="2" maxlength="40">
+                <input type="text" id="name-input" name="name" class="form__input" value="Жак-Ив Кусто" placeholder="Имя" required minlength="2" maxlength="40">
                 <span class="name-input-error form__error">Hello</span>
               </label>
               <label class="form__field">
-                <input type="text" id="job-input" class="form__input" value="Исследователь океана" placeholder="О себе" required minlength="2" maxlength="200">
+                <input type="text" id="job-input" name="info" class="form__input" value="Исследователь океана" placeholder="О себе" required minlength="2" maxlength="200">
                 <span class="job-input-error form__error"></span>
               </label>
               <button class="popup__button">Сохранить</button>
@@ -84,7 +83,5 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/cards.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

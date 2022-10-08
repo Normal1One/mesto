@@ -27,7 +27,7 @@ export class Card {
 
   _setEventListeners() {
     this._cardImage.addEventListener('click', () => {
-      this._handleCardClick(this._name, this._link);
+      this._handleCardClick({ name: this._name, link: this._link });
     });
     this._likeButton.addEventListener('click', this._handleLikeIcon);
     this._deleteButton.addEventListener('click', this._handleDeleteIcon);
