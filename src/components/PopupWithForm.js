@@ -6,10 +6,10 @@ export class PopupWithForm extends Popup {
     this._popup = document.querySelector(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._element = this._popup.querySelector('.form');
+    this._inputList = this._element.querySelectorAll('.form__input');
   }
 
   _getInputValues() {
-    this._inputList = this._element.querySelectorAll('.form__input');
     this._formValues = {};
     this._inputList.forEach(input => {
       this._formValues[input.name] = input.value;
@@ -23,11 +23,12 @@ export class PopupWithForm extends Popup {
       this._handleFormSubmit(this._getInputValues());
       this.close();
     });
-    this._popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
-        this.close();
-      }
-      evt.stopImmediatePropagation();
+    super.setEventListeners();
+  }
+
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      input.value = data[input.name];
     });
   }
 
