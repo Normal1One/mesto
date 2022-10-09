@@ -22,12 +22,15 @@ const cardClickHandler = (item) => {
   popupWithImage.open(item);
 }
 
+function createCard(item) {
+  const card = new Card(item, elementTemplate, cardClickHandler)
+  return card.generateCard();
+}
+
 const elementPopup = new PopupWithForm('#popup-add', {
-  handleFormSubmit: () => {
-    const data = elementPopup._getInputValues();
-    const card = new Card(data, elementTemplate, cardClickHandler)
-    const cardElement = card.generateCard();
-    sectionElements.addItem(cardElement);
+  handleFormSubmit: (data) => {
+    const cardElement = createCard(data);
+    sectionElements.prependItem(cardElement);
   }
 });
 
@@ -53,9 +56,8 @@ buttonAdd.addEventListener('click', function () {
 buttonEdit.addEventListener('click', openProfilePopup);
 
 const sectionElements = new Section({ items: initialCards, renderer: (item) => {
-    const card = new Card(item, elementTemplate, cardClickHandler)
-    const cardElement = card.generateCard();
-    sectionElements.prependItem(cardElement);
+    const cardElement = createCard(item);
+    sectionElements.addItem(cardElement);
   }
 }, '.elements');
 
