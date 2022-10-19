@@ -18,14 +18,14 @@ export class FormValidator {
   }
 
   _showInputError(formElement, inputElement, errorMessage) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
     inputElement.classList.add(this._inputError);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._error);
   }
 
   _hideInputError(formElement, inputElement) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
     inputElement.classList.remove(this._inputError);
     errorElement.classList.remove(this._error);
     errorElement.textContent = '';

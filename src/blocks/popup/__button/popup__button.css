@@ -10,9 +10,9 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  margin: 18px auto 0 auto;
   padding: 0;
   border: 0;
+  margin: 18px auto 36px;
 }
 
 .popup__button:hover {
