@@ -1,10 +1,11 @@
 export class Card {
-  constructor(data, cardSelector, handleCardClick, deletePopup, handleImageLike, handleImageUnlike, handleDeleteCard) {
+  constructor(data, cardSelector, handleCardClick, deletePopup, handleImageLike, handleImageUnlike, handleDeleteCard, userId) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name + ' фото';
     this._likes = data.likes;
     this._id = data._id;
+    this._userId = userId;
     this._owner = data.owner;
     this._elementTemplate = cardSelector;
     this._handleCardClick = handleCardClick;
@@ -32,12 +33,12 @@ export class Card {
     this._cardImage.alt = this._alt;
     this._likeCountElement.textContent = this._likes.length;
     const isLiked = this._likes.some(elem => {
-      return elem._id === 'cab7cb74084638a0029ce303';
+      return elem._id === this._userId;
     });
     if (isLiked === true) {
       this._likeButton.classList.add('like-button_active');
     }
-    if (this._owner._id !== 'cab7cb74084638a0029ce303') {
+    if (this._owner._id !== this._userId) {
       this._deleteButton.classList.add('delete-button-disable');
     }
 
@@ -57,11 +58,10 @@ export class Card {
   }
 
   _handleLikeIcon(evt) {
-    evt.target.classList.toggle('like-button_active');
     if (evt.target.classList.contains('like-button_active')) {
-      this._handleImageLike(this._id, this._likeCountElement);
+      this._handleImageUnlike(this._id, this._likeCountElement, evt);
     } else {
-      this._handleImageUnlike(this._id, this._likeCountElement);
+      this._handleImageLike(this._id, this._likeCountElement, evt);
     }
   }
 
