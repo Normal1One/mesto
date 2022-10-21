@@ -54,6 +54,10 @@ export class Card {
     });
   }
 
+  isLiked() {
+    return this._likeButton.classList.contains('like-button_active');
+  }
+
   removeLike(response) {
     this._likeButton.classList.remove('like-button_active');
     this._likeCountElement.textContent = response.likes.length;

@@ -24,9 +24,8 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 });
-
-let userInfo = new UserInfo('.profile__info-name', '.profile__info-job', '.profile__avatar');
-let sectionElements = new Section({ renderer: (item) => {
+const userInfo = new UserInfo('.profile__info-name', '.profile__info-job', '.profile__avatar');
+const sectionElements = new Section({ renderer: (item) => {
     const card = new Card(
       item,
       elementTemplate,
@@ -93,11 +92,11 @@ function addLike(data) {
     })
 }
 
-function handleLikeClick(data) {
-  if (data._likeButton.classList.contains('like-button_active')) {
-    removeLike(data);
+function handleLikeClick(card) {
+  if (card.isLiked()) {
+    removeLike(card);
   } else {
-    addLike(data);
+    addLike(card);
   }
 }
 
