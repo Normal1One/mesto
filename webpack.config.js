@@ -10,6 +10,7 @@ module.exports = {
       path.resolve(__dirname, "src/pages/index.js"),
       path.resolve(__dirname, "src/components/FormValidator.js"),
       path.resolve(__dirname, "src/components/Card.js"),
+      path.resolve(__dirname, "src/components/PopupWithConfirmation.js"),
       path.resolve(__dirname, "src/components/PopupWithForm.js"),
       path.resolve(__dirname, "src/components/PopupWithImage.js"),
       path.resolve(__dirname, "src/components/Popup.js"),

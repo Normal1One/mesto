@@ -4,16 +4,14 @@ export class Api {
   }
 
   getProfileInfo() {
-    return this._request(`${this._options.baseUrl}/users/me`, {
+    return this._request(`users/me`, {
       method: 'GET',
-      headers: this._options.headers,
     })
   }
 
   changeProfilePhoto(link) {
-    return this._request(`${this._options.baseUrl}/users/me/avatar`, {
+    return this._request(`users/me/avatar`, {
       method: 'PATCH',
-      headers: this._options.headers,
       body: JSON.stringify({
         avatar: link
       })
@@ -21,9 +19,8 @@ export class Api {
   }
 
   changeProfileInfo(name, about) {
-    return this._request(`${this._options.baseUrl}/users/me`, {
+    return this._request(`users/me`, {
       method: 'PATCH',
-      headers: this._options.headers,
       body: JSON.stringify({
         name: name,
         about: about
@@ -32,9 +29,8 @@ export class Api {
   }
 
   createCard(name, link) {
-    return this._request(`${this._options.baseUrl}/cards`, {
+    return this._request(`cards`, {
       method: 'POST',
-      headers: this._options.headers,
       body: JSON.stringify({
         name: name,
         link: link
@@ -43,35 +39,32 @@ export class Api {
   }
 
   deleteCard(id) {
-    return this._request(`${this._options.baseUrl}/cards/${id}`, {
+    return this._request(`cards/${id}`, {
       method: 'DELETE',
-      headers: this._options.headers,
     })
   }
 
   likeImage(id) {
-    return this._request(`${this._options.baseUrl}/cards/${id}/likes`, {
+    return this._request(`cards/${id}/likes`, {
       method: 'PUT',
-      headers: this._options.headers,
     })
   }
 
   unlikeImage(id) {
-    return this._request(`${this._options.baseUrl}/cards/${id}/likes`, {
+    return this._request(`cards/${id}/likes`, {
       method: 'DELETE',
-      headers: this._options.headers,
     })
   }
 
   getInitialCards() {
-    return this._request(`${this._options.baseUrl}/cards`, {
+    return this._request(`cards`, {
       method: 'GET',
-      headers: this._options.headers,
     })
   }
 
   _request(url, options) {
-    return fetch(url, options).then(this._checkResponse);
+    options['headers'] = this._options.headers;
+    return fetch(`${this._options.baseUrl}/${url}`, options).then(this._checkResponse);
   }
 
   _checkResponse(response) {

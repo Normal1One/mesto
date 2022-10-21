@@ -1,19 +1,16 @@
 export class Card {
-  constructor(data, cardSelector, handleCardClick, deletePopup, handleImageLike, handleImageUnlike, handleDeleteCard, userId) {
+  constructor(data, cardSelector, handleCardClick, handleImageLike, handleCardDelete, userId) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name + ' фото';
     this._likes = data.likes;
     this._id = data._id;
-    this._userId = userId;
     this._owner = data.owner;
+    this._userId = userId;
     this._elementTemplate = cardSelector;
     this._handleCardClick = handleCardClick;
-    this._handleImageLike = handleImageLike;
-    this._handleImageUnlike = handleImageUnlike;
-    this._handleDeleteCard = handleDeleteCard;
-    this._deletePopupButton = document.querySelector('.delete-popup-button');
-    this._deletePopup = deletePopup;
+    this._handleCardDelete = handleCardDelete;
+    this._handleLike = handleImageLike;
   }
 
   _getTemplate() {
@@ -49,26 +46,21 @@ export class Card {
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick({ name: this._name, link: this._link });
     });
-    this._likeButton.addEventListener('click', (evt) => {
-      this._handleLikeIcon(evt);
+    this._likeButton.addEventListener('click', () => {
+      this._handleLike(this);
     });
     this._deleteButton.addEventListener('click', (evt) => {
-      this._handleDeleteIcon(evt);
+      this._handleCardDelete(this, evt);
     });
   }
 
-  _handleLikeIcon(evt) {
-    if (evt.target.classList.contains('like-button_active')) {
-      this._handleImageUnlike(this._id, this._likeCountElement, evt);
-    } else {
-      this._handleImageLike(this._id, this._likeCountElement, evt);
-    }
+  removeLike(response) {
+    this._likeButton.classList.remove('like-button_active');
+    this._likeCountElement.textContent = response.likes.length;
   }
 
-  _handleDeleteIcon(evt) {
-    this._deletePopup.open();
-    this._deletePopupButton.addEventListener('click', () => {
-      this._handleDeleteCard(this._id, evt, this._deletePopup);
-    });
+  addLike(response) {
+    this._likeButton.classList.add('like-button_active');
+    this._likeCountElement.textContent = response.likes.length;
   }
 }
