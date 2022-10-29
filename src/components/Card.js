@@ -29,10 +29,7 @@ export class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._alt;
     this._likeCountElement.textContent = this._likes.length;
-    const isLiked = this._likes.some(elem => {
-      return elem._id === this._userId;
-    });
-    if (isLiked === true) {
+    if (this._likes.some(elem => elem._id === this._userId)) {
       this._likeButton.classList.add('like-button_active');
     }
     if (this._owner._id !== this._userId) {
