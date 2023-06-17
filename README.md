@@ -1,7 +1,7 @@
-# Проект: Mesto
+# Project: Mesto
 ```
 https://normal1one.github.io/mesto/
 ```
 
-## Технологии
+## Technologies
 HTML, CSS, JavaScript
